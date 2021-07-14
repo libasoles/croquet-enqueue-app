@@ -34,6 +34,7 @@ export default class SpeakersQueueView extends Croquet.View {
 
   letSpeakerTalk({ name }) {
     currentSpeakerName.textContent = name;
+    currentSpeaker.style.visibility = "visible";
     speakerFinished.style.visibility = "visible";
   }
 

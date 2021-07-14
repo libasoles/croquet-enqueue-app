@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font: 16px sans-serif;
@@ -20,11 +24,12 @@ body {
 
 .pageContent {
   display: flex;
+  height: 100%;
 }
 
 .container {
-  margin: 5px;
-  height: 90vh;
+  background: #353535;
+  padding: 5px 5px 10px 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -58,6 +63,7 @@ body {
   background: #82C26E;
   color: white;
   justify-content: space-between;
+  visibility: hidden;
 }
 
 #speakerFinished {
@@ -86,10 +92,12 @@ body {
 
 #message {
   margin: 10px 0;
-  color: #565656;
+  color: #C5C5C5;
   font-size: .85rem;
   border-left: 3px solid #A8D26D;
-  padding: 2px 3px;
+  padding: 0px 5px;
+  display: flex;
+  align-items: center;
 }
 
 footer .action {
@@ -114,7 +122,6 @@ aside {
     background: white;
     color: white;
     height: 40px;
-    margin-bottom: 7px;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;

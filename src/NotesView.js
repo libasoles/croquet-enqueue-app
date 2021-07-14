@@ -27,8 +27,7 @@ export default class NotesView extends Croquet.View {
 
   listenToUserEvents() {
     sharedNotesToggleEdition.onchange = (event) => this.onToggleEdition(event);
-    sharedNotes.keypress = (event) => this.onNotesChange(event);
-    sharedNotes.onkeypress = (event) => this.onNotesChange(event);
+    sharedNotes.oninput = (event) => this.onNotesChange(event);
   }
 
   onToggleEdition(event) {
@@ -46,16 +45,10 @@ export default class NotesView extends Croquet.View {
     keyboardEvent.preventDefault();
 
     const cursorPosition = keyboardEvent.target.selectionStart;
-    const previousText = keyboardEvent.target.value;
-
-    const nextText =
-      previousText.substring(0, cursorPosition) +
-      keyboardEvent.key +
-      previousText.substring(cursorPosition, previousText.length);
 
     this.publish("sharedNotes", "push", {
       viewId: this.viewId,
-      value: nextText,
+      value: keyboardEvent.target.value,
       cursorPosition,
     });
   }
@@ -64,7 +57,7 @@ export default class NotesView extends Croquet.View {
     sharedNotes.value = event.value;
 
     if (event.viewId === this.viewId) {
-      const cursorPosition = event.cursorPosition + 1;
+      const cursorPosition = event.cursorPosition;
       sharedNotes.selectionStart = cursorPosition;
       sharedNotes.selectionEnd = cursorPosition;
     }
