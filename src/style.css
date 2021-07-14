@@ -1,0 +1,148 @@
+body {
+  margin: 0;
+  font: 16px sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pageHeader {
+  background: #5CB270;
+  color: white;
+  padding: 10px 8px;
+}
+
+.pageFooter {
+  background: #5CB270;
+  color: white;
+  padding: 10px 8px;
+}
+
+.pageContent {
+  display: flex;
+}
+
+.container {
+  margin: 5px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 400px;
+}
+
+.button {
+  cursor: pointer;
+}
+
+.input {
+  padding: 10px 8px;
+  border: 1px solid #939393;
+}
+
+.input.errored {
+  border-color: red;
+}
+
+#enqueueMe {
+  background: #5CB270;
+  color: white;
+  padding: 10px 8px;
+  border: none;
+}
+
+#currentSpeaker {
+  display: flex;
+  margin: 1px 0px;
+  padding: 10px 8px;
+  background: #82C26E;
+  color: white;
+  justify-content: space-between;
+}
+
+#speakerFinished {
+  border: none;
+  background: none;
+  color: white;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+#queuedSpeakers {  
+  display: flex;
+  flex-direction: column; 
+
+  padding-left: 0px;
+  margin: 5px 0;
+  margin-bottom: 10px;  
+}
+
+#queuedSpeakers li {
+  margin: 1px 0px;
+  padding: 10px 8px;
+  background: #A8D26D;
+  color: white;
+}
+
+#message {
+  margin: 10px 0;
+  color: #565656;
+  font-size: .85rem;
+  border-left: 3px solid #A8D26D;
+  padding: 2px 3px;
+}
+
+footer .action {
+  display: flex;
+  justify-content: space-between;
+}
+
+aside {
+  display: none;
+}
+
+@media (min-width: 840px) {
+  aside {    
+    margin: 5px 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column; 
+  }
+  
+  header {
+    margin: 0px;
+    background: white;
+    color: white;
+    height: 40px;
+    margin-bottom: 7px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: #939393;
+    font-size: 0.8rem; 
+  }
+
+  header > label, header > label > input {
+    cursor: pointer;
+  }
+
+  textarea {
+    min-height: 400px;      
+  }
+
+  textarea:disabled {
+    border: none;      
+  }
+}
+
+#widgets {
+  top: 70px;
+}
+
+@media (max-width: 640px) {
+  #pageHeader, #widgets {
+    display: none;
+  }
+}
+
+

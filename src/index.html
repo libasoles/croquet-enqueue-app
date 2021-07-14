@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Enqueue App</title>
+  <link rel='stylesheet' href='https://codepen.io/croquet/pen/vYYyNed.css'>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <header class="pageHeader"></header>
+
+  <div class="pageContent">  
+    <main class="container">
+      <section>
+        <div id="currentSpeaker">
+          <span id="currentSpeakerName"></span>
+          <button 
+                  id="speakerFinished" 
+                  class="button">
+            ✔ Listo
+          </button>
+        </div>
+    
+        <ol id="queuedSpeakers"></ol>
+      </section>
+    
+      <footer>    
+        <div id="message"></div>
+        
+        <div class="action">
+          <button 
+                  id="enqueueMe" 
+                  class="button">
+            Quiero hablar ✋
+          </button>
+    
+          <input 
+                id="speakerName" 
+                class="input" 
+                placeholder="Tu nombre" />
+        </div>    
+      </footer>
+    </main>
+    
+    <aside>
+      <header>
+        <label>
+          <input type="checkbox" id="sharedNotesToggleEdition"/>
+            Editar
+          </label>
+        <span id="sharedNotesEditors"></span>
+      </header>
+
+      <textarea id="sharedNotes" 
+        placeholder="Notas compartidas" disabled></textarea>
+    </aside>
+  </div>
+
+  <footer class="pageFooter"></footer>
+
+  <script src='https://unpkg.com/@croquet/croquet'></script>
+  <script src='https://codepen.io/croquet/pen/vYYyNed.js'></script>
+  <script src="./main.js"></script>
+
+</body>
+</html>
