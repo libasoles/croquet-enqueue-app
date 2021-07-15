@@ -26,14 +26,20 @@ export default class NotesView extends Croquet.View {
   }
 
   listenToUserEvents() {
+    toggleEditorVisibility.onclick = (event) => this.onToggleVisibility(event);
     sharedNotesToggleEdition.onchange = (event) => this.onToggleEdition(event);
     sharedNotes.oninput = (event) => this.onNotesChange(event);
+  }
+
+  onToggleVisibility() {
+    sharedNotesContainer.style.visibility =
+      sharedNotesContainer.style.visibility !== "hidden" ? "hidden" : "visible";
   }
 
   onToggleEdition(event) {
     const isEditing = event.target.checked;
 
-    this.publish("sharedNotes", "toggleEditor", {
+    this.publish("sharedNotes", "toggleEdition", {
       viewId: this.viewId,
       isEditing,
     });
