@@ -48,6 +48,7 @@ export default class SpeakersQueue extends Croquet.Model {
     if (this.speakers.size === 0) {
       this.currentSpeaker = {};
       this.publish("queue", "empty");
+
       return;
     }
 

@@ -1,4 +1,4 @@
-import GlobalTimer, { GlobalTimerView } from "./GlobalTimer";
+import Timer, { TimerView } from "./Timer";
 import SpeakersQueue from "./SpeakersQueue";
 import SpeakersQueueView from "./SpeakersQueueView";
 import Notes from "./Notes";
@@ -6,8 +6,9 @@ import NotesView from "./NotesView";
 
 class App extends Croquet.Model {
   init() {
-    this.globalTimer = GlobalTimer.create();
+    this.globalTimer = Timer.create();
     this.speakersQueue = SpeakersQueue.create();
+    this.speakerTimer = Timer.create();
     this.notes = Notes.create();
   }
 }
@@ -17,14 +18,15 @@ class AppView extends Croquet.View {
     super(model);
     this.model = model;
 
-    new GlobalTimerView(model.globalTimer);
+    new TimerView(model.globalTimer, globalTimer);
+    new TimerView(model.speakerTimer, speakerTimer);
     new SpeakersQueueView(model.speakersQueue);
     new NotesView(model.notes);
   }
 }
 
 App.register("App");
-GlobalTimer.register("GlobalTimer");
+Timer.register("GlobalTimer");
 SpeakersQueue.register("SpeakersQueue");
 Notes.register("Notes");
 

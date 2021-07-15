@@ -63,6 +63,16 @@ body {
   border: none;
 }
 
+.currentSpeakerContainer {
+  display: flex;
+  flex-direction: column; 
+}
+
+.currentSpeakerContainer .timer {
+  align-self: flex-end;
+  margin: 4px 2px;
+}
+
 #currentSpeaker {
   display: flex;
   margin: 1px 0px;

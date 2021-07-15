@@ -13,15 +13,18 @@
   <div class="pageContent">  
     <main class="container">
       <section>
-        <div id="currentSpeaker">
-          <span id="currentSpeakerName"></span>
-          <button 
-                  id="speakerFinished" 
-                  class="button">
-            ✔ Listo
-          </button>
+        <div class="currentSpeakerContainer">
+          <div id="currentSpeaker">
+            <span id="currentSpeakerName"></span>
+            <button 
+                    id="speakerFinished" 
+                    class="button">
+              ✔ Listo
+            </button>
+          </div>
+          <div id="speakerTimer" class="timer" title="reset"></div>
         </div>
-    
+
         <ol id="queuedSpeakers"></ol>
       </section>
     
