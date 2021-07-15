@@ -20,6 +20,13 @@ body {
   background: #5CB270;
   color: white;
   padding: 10px 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.timer {
+  font-size: 0.8em;
+  cursor: pointer;
 }
 
 .pageContent {

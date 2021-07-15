@@ -12,7 +12,10 @@ export default class SpeakersQueueView extends Croquet.View {
   hydrate() {
     if (this.model.isSomeoneTalking())
       this.handleCurrentSpeakerTurn(this.model.currentSpeaker);
-    if (!this.model.isQueueEmpty()) this.handleAddAll(this.model.speakers);
+    if (!this.model.isQueueEmpty()) {
+      queuedSpeakers.innerHTML = "";
+      this.handleAddAll(this.model.speakers);
+    }
   }
 
   subscribeToEvents() {
