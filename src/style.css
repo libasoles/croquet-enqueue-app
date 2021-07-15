@@ -8,6 +8,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: #1a1b1a;
 }
 
 .pageHeader {
@@ -49,7 +50,9 @@ body {
 
 .input {
   padding: 10px 8px;
-  border: 1px solid #939393;
+  border: 1px solid #474948;
+  background: #1a1b1a;
+  color: #c0bbb2;
 }
 
 .input.errored {
@@ -66,21 +69,48 @@ body {
 .currentSpeakerContainer {
   display: flex;
   flex-direction: column; 
-}
-
-.currentSpeakerContainer .timer {
-  align-self: flex-end;
-  margin: 4px 2px;
+  margin-bottom: 15px;
 }
 
 #currentSpeaker {
   display: flex;
-  margin: 1px 0px;
+  margin: 1px 0 2px 0;
   padding: 10px 8px;
   background: #82C26E;
   color: white;
   justify-content: space-between;
   visibility: hidden;
+}
+
+.speakerContext {
+  display: flex;
+  align-self: flex-end;
+  align-items: flex-end;
+  margin: 0 0 4px 2px;
+  color: #c2c2c2;
+  visibility: hidden;
+}
+
+.speakerContext .feedback {
+  display: flex;
+}
+
+.speakerContext .timer {
+  margin: 0 5px 0 5px;
+  font-size: .7em;
+  min-width: 45px;
+  text-align: right;
+}
+
+.speakerContext .action {
+  font-size: .7em;
+  margin: 0;
+  min-width: 30px;
+}
+
+.speakerContext .icon {
+  font-size: 1em;
+  cursor: pointer;  
 }
 
 #speakerFinished {
@@ -136,7 +166,6 @@ aside {
   
   header {
     margin: 0px;
-    background: white;
     color: white;
     height: 40px;
     display: flex;
@@ -146,12 +175,28 @@ aside {
     font-size: 0.8rem; 
   }
 
-  header > label, header > label > input {
-    cursor: pointer;
+  header > label, 
+  header > label > input {
+    cursor: pointer;    
+  }
+
+  header > label > input {
+    width: 10px;
+  }
+
+  header > .info {
+    font-size: 0.75rem; 
   }
 
   textarea {
-    min-height: 400px;      
+    min-height: 400px;  
+    background: #353535;   
+    color: #cecdcd; 
+    margin-top: 5px;
+  }
+
+  textarea::placeholder {
+    color: #949494;
   }
 
   textarea:disabled {

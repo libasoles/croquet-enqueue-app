@@ -22,7 +22,21 @@
               ✔ Listo
             </button>
           </div>
-          <div id="speakerTimer" class="timer" title="reset"></div>
+
+          <div id="speakerContext" class="speakerContext">           
+            <div class="feedback">
+              <div id="like" class="action">
+                <span class="count">0</span> 
+                <span class="icon">👍</span>               
+              </div>
+              <div id="dislike" class="action">
+                <span class="icon">👎</span>
+                <span class="count">0</span>
+              </div>    
+            </div>      
+            
+            <div id="speakerTimer" class="timer" title="reset"></div>
+          </div>
         </div>
 
         <ol id="queuedSpeakers"></ol>
@@ -52,7 +66,7 @@
           <input type="checkbox" id="sharedNotesToggleEdition"/>
             Editar
           </label>
-        <span id="sharedNotesEditors"></span>
+        <span id="sharedNotesEditors" class="info"></span>
       </header>
 
       <textarea id="sharedNotes" 

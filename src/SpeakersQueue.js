@@ -27,6 +27,8 @@ export default class SpeakersQueue extends Croquet.Model {
     if (!this.isSomeoneTalking()) {
       this.currentSpeaker = speaker;
       this.publish("queue", "addFirst", speaker);
+      this.resetContext();
+
       return;
     }
 
@@ -45,7 +47,7 @@ export default class SpeakersQueue extends Croquet.Model {
   }
 
   nextSpeaker() {
-    if (this.speakers.size === 0) {
+    if (this.isQueueEmpty()) {
       this.currentSpeaker = {};
       this.publish("queue", "empty");
 
@@ -56,11 +58,17 @@ export default class SpeakersQueue extends Croquet.Model {
     this.speakers.delete(this.currentSpeaker.viewId);
 
     this.publish("queue", "current", this.currentSpeaker);
+    this.resetContext();
   }
 
   updateStatus({ viewId, message }) {
     this.status.set(viewId, message);
 
     this.publish("status", "display");
+  }
+
+  resetContext() {
+    this.publish("speakerFeedback", "reset");
+    this.publish("speakerTimer", "reset");
   }
 }

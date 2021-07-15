@@ -38,6 +38,7 @@ export default class SpeakersQueueView extends Croquet.View {
   letSpeakerTalk({ name }) {
     currentSpeakerName.textContent = name;
     currentSpeaker.style.visibility = "visible";
+    speakerContext.style.visibility = "visible";
     speakerFinished.style.visibility = "visible";
   }
 
@@ -106,6 +107,7 @@ export default class SpeakersQueueView extends Croquet.View {
   handleEmptyQueue() {
     currentSpeakerName.textContent = "Quien quiere hablar? 👀";
     speakerFinished.style.visibility = "hidden";
+    speakerContext.style.visibility = "hidden";
 
     this.displayMessage("");
   }

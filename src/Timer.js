@@ -1,34 +1,38 @@
 export default class Timer extends Croquet.Model {
-  init() {
+  init(options) {
     this.count = 0;
-    this.subscribe(this.id, "reset", this.resetCounter);
+    this.identifier = options ? options.eventsIdentifier : this.id;
+
+    this.subscribe(this.identifier, "reset", this.resetCounter);
     this.future(1000).tick();
   }
 
   resetCounter() {
     this.count = 0;
-    this.publish(this.id, "update", this.count);
+    this.publish(this.identifier, "update", this.count);
   }
 
   tick() {
     this.count++;
-    this.publish(this.id, "update", this.count);
+    this.publish(this.identifier, "update", this.count);
     this.future(1000).tick();
   }
 }
 
 export class TimerView extends Croquet.View {
-  constructor(model, domNode) {
+  constructor(model, domNode, eventsIdentifier = null) {
     super(model);
     this.model = model;
     this.domNode = domNode;
+    this.identifier = eventsIdentifier || this.model.id;
+
+    this.subscribe(this.identifier, "update", this.handleUpdate);
 
     domNode.onclick = (event) => this.onclick(event);
-    this.subscribe(model.id, "update", this.handleUpdate);
   }
 
   onclick() {
-    this.publish(this.model.id, "reset");
+    this.publish(this.identifier, "reset");
   }
 
   handleUpdate(seconds) {
