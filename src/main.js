@@ -41,7 +41,7 @@ Toast.register("Toast");
 
 Croquet.Session.join({
   appId: "io.codepen.croquet.enqueueApp",
-  name: "encolap",
+  name: window.location.pathname,
   password: "secret",
   model: App,
   view: AppView,
