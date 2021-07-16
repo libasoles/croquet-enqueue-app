@@ -55,6 +55,10 @@ export default class SpeakersQueue extends Croquet.Model {
     }
   }
 
+  getCurrentSpeaker() {
+    return this.currentSpeaker;
+  }
+
   nextSpeaker() {
     if (this.isQueueEmpty()) {
       this.currentSpeaker = {};
@@ -71,7 +75,7 @@ export default class SpeakersQueue extends Croquet.Model {
   }
 
   resetContext() {
-    this.publish("speakerFeedback", "reset");
+    this.publish("reaction", "reset");
     this.publish("speakerTimer", "reset");
   }
 }

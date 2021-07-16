@@ -1,6 +1,7 @@
 @import "./layout.css";
 @import "./queue.css";
 @import "./sharedNotes.css";
+@import "./feedback.css";
 @import "./widgets.css";
 
 :root {
@@ -56,6 +57,12 @@ body {
 
 .input.errored {
   border-color: rgb(211, 75, 75);
+}
+
+textarea {
+  background: var(--secondaryBackground);
+  color: var(--secondaryFontColor);
+  padding: 5px;
 }
 
 textarea::placeholder {

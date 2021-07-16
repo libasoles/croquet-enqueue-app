@@ -9,7 +9,15 @@
     <link rel="stylesheet" href="./style/main.css" />
   </head>
   <body>
-    <header class="pageHeader"></header>
+    <header class="pageHeader">
+      <div class="pageTitle"></div>
+      <button
+        id="notificationsBell"
+        class="button notificationsBell shakingBell"
+      >
+        <span class="icon actionIcon bell">🔔</span>
+      </button>
+    </header>
 
     <div class="pageContent">
       <main class="mainSection">
@@ -24,20 +32,31 @@
 
             <div id="speakerContext" class="speakerContext">
               <div class="feedback">
-                <div id="like" class="action">
-                  <span class="count">0</span>
-                  <span class="icon actionIcon">👍</span>
-                </div>
-                <div id="dislike" class="action">
-                  <span class="icon actionIcon">👎</span>
-                  <span class="count">0</span>
+                <button id="writeFeedback" class="button writeFeedback">
+                  ✍️ feedback
+                </button>
+
+                <div class="reactions">
+                  <div id="like" class="reaction">
+                    <span class="count">0</span>
+                    <span class="icon actionIcon">👍</span>
+                  </div>
+                  <div id="dislike" class="reaction">
+                    <span class="icon actionIcon">👎</span>
+                    <span class="count">0</span>
+                  </div>
                 </div>
               </div>
 
-              <div id="speakerTimer" class="timer" title="reset">
+              <button
+                id="speakerTimer"
+                class="button timer"
+                type="reset"
+                title="reset"
+              >
                 <span class="time"></span>
                 <span class="restartTimer">🟣</span>
-              </div>
+              </button>
             </div>
           </div>
 
@@ -53,6 +72,34 @@
             <input id="speakerName" class="input" placeholder="Tu nombre" />
           </div>
         </footer>
+
+        <div id="feedbackModal" class="modal feedbackModal">
+          <header>
+            <button class="button icon close">x</button>
+          </header>
+
+          <div class="title"></div>
+
+          <form>
+            <textarea id="feedbackInput" placeholder="..."></textarea>
+
+            <button id="submitFeedback" type="submit" class="button send">
+              Enviar
+            </button>
+          </form>
+        </div>
+
+        <div id="notificationsModal" class="modal notificationsModal">
+          <header>
+            <button class="button icon close">x</button>
+          </header>
+
+          <div class="title">Feedback recibido</div>
+
+          <ol id="notificationsList">
+            <li>Good boy</li>
+          </ol>
+        </div>
       </main>
 
       <aside id="sharedNotesContainer">
@@ -79,10 +126,10 @@
       >
         📝
       </button>
-      <div id="globalTimer" class="timer" title="reset">
+      <button id="globalTimer" class="button timer" type="reset" title="reset">
         <span class="time"></span>
         <span class="restartTimer">🟣</span>
-      </div>
+      </button>
     </footer>
 
     <script src="https://unpkg.com/@croquet/croquet"></script>

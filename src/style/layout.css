@@ -3,6 +3,9 @@
   color: var(--primaryFontColor);
   padding: 10px 8px;
   height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .pageContent {
@@ -30,4 +33,5 @@
 
 .pageFooter .timer {
   margin-right: 8px;
+  padding-left: 4px;
 }

@@ -1,0 +1,48 @@
+.modal {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  color: var(--secondaryFontColor);
+  background: var(--secondaryBackground);
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+.modal header {
+  display: flex;
+  justify-content: flex-end;
+  margin: 10px 0px;
+}
+
+.feedbackModal {
+  display: flex;
+  flex-direction: column;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.feedbackModal .title {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.feedbackModal form {
+  display: flex;
+  flex-direction: column;
+}
+
+.feedbackModal textarea {
+  margin: 5px 0 10px;
+  height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.feedbackModal .button[type="submit"] {
+  margin-top: 5px;
+  width: 6rem;
+  align-self: flex-end;
+}
