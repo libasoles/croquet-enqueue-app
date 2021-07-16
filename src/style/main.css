@@ -1,0 +1,63 @@
+@import "./layout.css";
+@import "./queue.css";
+@import "./sharedNotes.css";
+@import "./widgets.css";
+
+:root {
+  --primaryColor: #5cb270;
+  --secondaryColor: #82c26e;
+  --tertiaryColor: #a8d26d;
+  --primaryBackground: #1a1b1a;
+  --secondaryBackground: #353535;
+  --footerHeight: 40px;
+  --primaryFontColor: white;
+  --secondaryFontColor: #c2c2c2;
+  --tertiaryFontColor: #939393;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font: 1em sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--primaryBackground);
+}
+
+.button {
+  cursor: pointer;
+  font-size: 0.9rem;
+  background: var(--primaryColor);
+  color: var(--primaryFontColor);
+  border: none;
+  border-radius: 4px;
+}
+
+.button:focus-visible {
+  background: var(--secondaryColor);
+}
+
+.input {
+  padding: 10px 8px;
+  border: 1px solid #474948;
+  background: var(--primaryBackground);
+  color: var(--secondaryFontColor);
+  font-size: 0.9rem;
+}
+
+.input.errored {
+  border-color: rgb(211, 75, 75);
+}
+
+textarea::placeholder {
+  color: var(--tertiaryFontColor);
+}
+
+textarea:disabled {
+  border: none;
+}

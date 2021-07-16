@@ -1,0 +1,69 @@
+#sharedNotesContainer {
+  margin: 5px 10px 0;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+}
+
+#sharedNotesContainer header {
+  margin: 0px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  color: var(--tertiaryFontColor);
+  font-size: 0.8rem;
+}
+
+#sharedNotesContainer header > label,
+#sharedNotesContainer header > label > input {
+  cursor: pointer;
+}
+
+#sharedNotesContainer header > label > input {
+  width: 10px;
+}
+
+#sharedNotesContainer header > .info {
+  font-size: 0.75rem;
+}
+
+#sharedNotesContainer textarea {
+  height: 100%;
+  background: var(--secondaryBackground);
+  color: var(--secondaryFontColor);
+  margin-top: 5px;
+}
+
+@media (max-width: 640px) {
+  #pageHeader,
+  #widgets {
+    display: none;
+  }
+
+  .pageContent .container {
+    width: 100vw;
+  }
+
+  #sharedNotesContainer {
+    position: fixed;
+    z-index: 2;
+    top: 0px;
+    left: 0px;
+    margin: 0;
+    width: 100vw;
+    height: calc(100vh - var(--footerHeight));
+    background: var(--secondaryBackground);
+  }
+
+  #sharedNotesContainer header {
+    color: var(--secondaryFontColor);
+    font-size: 0.95rem;
+  }
+
+  #sharedNotesContainer textarea {
+    height: 100vh;
+    font-size: 1.1rem;
+  }
+}

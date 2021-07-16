@@ -1,0 +1,48 @@
+.pageHeader {
+  background: var(--primaryColor);
+  color: var(--primaryFontColor);
+  padding: 10px 8px;
+  height: 40px;
+}
+
+.pageContent {
+  display: flex;
+  height: 100%;
+}
+
+.pageFooter {
+  background: var(--primaryColor);
+  color: var(--primaryFontColor);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--footerHeight);
+}
+
+.pageFooter .navigationIcon {
+  height: 100%;
+  padding: 0 10px;
+}
+
+.pageFooter .navigationIcon.active {
+  background: var(--secondaryColor);
+}
+
+.pageFooter .timer {
+  margin-right: 8px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: var(--secondaryFontColor);
+  font-size: 0.85rem;
+  border-left: 3px solid var(--tertiaryColor);
+  padding: 0px 5px;
+}
+
+.toast .button {
+  transform: scale(0.8);
+}

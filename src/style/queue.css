@@ -1,0 +1,119 @@
+.pageContent .mainSection {
+  background: var(--secondaryBackground);
+  padding: 5px 5px 10px 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#enqueueMe {
+  padding: 10px 8px;
+}
+
+.currentSpeakerContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.speakerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1px 0px;
+  padding: 10px 8px;
+  color: var(--primaryFontColor);
+  font-size: 0.9rem;
+}
+
+#currentSpeaker {
+  margin: 1px 0 2px 0;
+  background: var(--secondaryColor);
+  visibility: hidden;
+}
+
+.speakerContext {
+  display: flex;
+  align-self: flex-end;
+  align-items: flex-end;
+  margin: 0 0 4px 2px;
+  color: var(--secondaryFontColor);
+  visibility: hidden;
+}
+
+.speakerContext .feedback {
+  display: flex;
+}
+
+.speakerContext .timer {
+  margin: 0 5px 0 5px;
+  font-size: 0.65rem;
+  min-width: 45px;
+  text-align: right;
+}
+
+.speakerContext .action {
+  font-size: 0.65rem;
+  margin: 0;
+  min-width: 30px;
+}
+
+.speakerContext .icon {
+  font-size: 0.7rem;
+}
+
+.speakerFinished {
+  color: var(--primaryFontColor);
+  padding: 2px 7px;
+  background: #86d886;
+  visibility: hidden;
+}
+
+.speakerFinished:hover {
+  background: var(--tertiaryColor);
+}
+
+#queuedSpeakers {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0px;
+  margin: 5px 0;
+  margin-bottom: 10px;
+}
+
+#queuedSpeakers li {
+  background: var(--tertiaryColor);
+  color: var(--primaryFontColor);
+}
+
+#queuedSpeakers li .eject {
+  color: var(--primaryFontColor);
+  background: var(--secondaryColor);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  height: 15px;
+  width: 15px;
+}
+
+#queuedSpeakers li .eject:hover {
+  background: var(--primaryColor);
+}
+
+.pageContent .mainSection footer .action {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 840px) {
+  .pageContent .mainSection {
+    width: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .pageContent .mainSection {
+    width: 100vw;
+  }
+}
