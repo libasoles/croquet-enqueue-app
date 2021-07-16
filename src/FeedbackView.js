@@ -33,7 +33,10 @@ export default class FeedbackView extends Croquet.View {
   onSubmitFeedback(e) {
     e.preventDefault();
     this.publish("feedback", "submit", {
-      viewId: this.viewId,
+      from: {
+        name: "anonymous",
+        viewId: this.viewId,
+      },
       for: this.speakersQueue.getCurrentSpeaker(),
       message: feedbackInput.value,
     });
@@ -47,7 +50,15 @@ export default class FeedbackView extends Croquet.View {
     display(notificationsModal);
   }
 
-  handleIncomingFeedback() {
+  handleIncomingFeedback(feedback) {
+    if (feedback.for.viewId !== this.viewId) return;
+
     notificationsBell.classList.add("unread");
+
+    const notification = document.createElement("li");
+    notification.className = "notification";
+    notification.appendChild(document.createTextNode(feedback.message));
+
+    notificationsList.prepend(notification);
   }
 }

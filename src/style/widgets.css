@@ -13,7 +13,7 @@
 }
 
 .shakingBell.unread {
-  animation: shake-animation 4.72s ease infinite;
+  animation: shake-animation 1.72s ease infinite;
   transform-origin: 50% 50%;
 }
 

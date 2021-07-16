@@ -8,6 +8,6 @@ export default class Feedback extends Croquet.Model {
   }
 
   submitFeedback(feedback) {
-    this.publish("feedback", "deliver", { feedback });
+    this.publish("feedback", "deliver", feedback);
   }
 }

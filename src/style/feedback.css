@@ -17,16 +17,18 @@
   margin: 10px 0px;
 }
 
-.feedbackModal {
+.modal {
   display: flex;
   flex-direction: column;
   padding: 0 10px;
   box-sizing: border-box;
 }
 
-.feedbackModal .title {
-  font-size: 0.9rem;
+.modal .title {
   margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--tertiaryColor);
+  width: fit-content;
 }
 
 .feedbackModal form {
@@ -45,4 +47,17 @@
   margin-top: 5px;
   width: 6rem;
   align-self: flex-end;
+}
+
+#notificationsList {
+  padding: 10px;
+  margin: 10px 0;
+}
+
+#notificationsList .notification {
+  list-style-type: none;
+  margin: 20px 0;
+  border-bottom: 2px solid var(--primaryColor);
+  padding-bottom: 15px;
+  font-size: 0.9rem;
 }
