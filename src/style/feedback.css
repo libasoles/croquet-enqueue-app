@@ -23,8 +23,23 @@
 
 #notificationsList .notification {
   list-style-type: none;
-  margin: 20px 0;
+  margin: 5px 0 15px;
   border-bottom: 2px solid var(--primaryColor);
-  padding-bottom: 15px;
+  padding-bottom: 5px;
   font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#notificationsList .notificationContent {
+  display: block;
+}
+
+#notificationsList .notificationAuthor {
+  display: block;
+  margin: 5px 0;
+  width: fit-content;
+  padding-bottom: 5px;
+  font-size: 0.8rem;
+  align-self: flex-end;
 }

@@ -7,6 +7,16 @@ export function createCloseButton({ className, callback }) {
   return closeButton;
 }
 
+export function createElement({ type, ...options }) {
+  const element = document.createElement(type);
+
+  for (const [key, value] of Object.entries(options)) {
+    element[key] = value;
+  }
+
+  return element;
+}
+
 export function display(domNode) {
   domNode.style.visibility = "visible";
 }

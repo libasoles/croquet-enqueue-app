@@ -1,4 +1,4 @@
-import { display, hide } from "./utils";
+import { createElement, display, hide } from "./utils";
 
 export default class FeedbackView extends Croquet.View {
   constructor(model, speakersQueue) {
@@ -34,7 +34,7 @@ export default class FeedbackView extends Croquet.View {
     e.preventDefault();
     this.publish("feedback", "submit", {
       from: {
-        name: "anonymous",
+        name: speakerName.value || "anonymous",
         viewId: this.viewId,
       },
       for: this.speakersQueue.getCurrentSpeaker(),
@@ -57,7 +57,21 @@ export default class FeedbackView extends Croquet.View {
 
     const notification = document.createElement("li");
     notification.className = "notification";
-    notification.appendChild(document.createTextNode(feedback.message));
+
+    const content = createElement({
+      type: "span",
+      className: "notificationContent",
+      textContent: feedback.message,
+    });
+
+    const author = createElement({
+      type: "span",
+      className: "notificationAuthor",
+      textContent: feedback.from.name,
+    });
+
+    notification.appendChild(content);
+    notification.appendChild(author);
 
     notificationsList.prepend(notification);
   }
