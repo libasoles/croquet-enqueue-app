@@ -1,4 +1,4 @@
-import { createCloseButton } from "./utils";
+import { createElement, createCloseButton } from "./utils";
 
 export default class Toast extends Croquet.Model {
   init() {
@@ -19,9 +19,11 @@ export class ToastView extends Croquet.View {
   }
 
   handleDisplayStatus({ message }) {
-    const toast = document.createElement("div");
-    toast.className = "toast";
-    toast.textContent = message || "";
+    const toast = createElement({
+      type: "div",
+      className: "toast",
+      textContent: message || "",
+    });
 
     const closeButton = createCloseButton({
       className: "",

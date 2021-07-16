@@ -55,8 +55,10 @@ export default class FeedbackView extends Croquet.View {
 
     notificationsBell.classList.add("unread");
 
-    const notification = document.createElement("li");
-    notification.className = "notification";
+    const notification = createElement({
+      type: "li",
+      className: "notification",
+    });
 
     const content = createElement({
       type: "span",

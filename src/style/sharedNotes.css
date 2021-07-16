@@ -18,16 +18,16 @@
   font-size: 0.8rem;
 }
 
-.sharedNotesModal header > label,
-.sharedNotesModal header > label > input {
+.sharedNotesModal .context > label,
+.sharedNotesModal .context > label > input {
   cursor: pointer;
 }
 
-.sharedNotesModal header > label > input {
+.sharedNotesModal .context > label > input {
   width: 10px;
 }
 
-.sharedNotesModal header > .info {
+.sharedNotesModal .context > .info {
   font-size: 0.75rem;
 }
 

@@ -1,4 +1,4 @@
-import { createCloseButton, display, hide } from "./utils";
+import { createElement, createCloseButton, display, hide } from "./utils";
 
 export default class SpeakersQueueView extends Croquet.View {
   constructor(model) {
@@ -45,9 +45,12 @@ export default class SpeakersQueueView extends Croquet.View {
   }
 
   enqueueSpeaker({ name, viewId }) {
-    const speaker = document.createElement("li");
+    const speaker = createElement({
+      type: "li",
+      className: "speakerRow",
+    });
+
     speaker.setAttribute("data-viewId", viewId);
-    speaker.className = "speakerRow";
     speaker.appendChild(document.createTextNode(name));
 
     if (this.viewId === viewId) {
