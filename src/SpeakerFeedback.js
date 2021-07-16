@@ -13,18 +13,24 @@ export default class SpeakerFeedback extends Croquet.Model {
   }
 
   like(viewId) {
-    this.likes.add(viewId);
-
-    this.notify();
+    this.tally("likes", viewId);
   }
 
   dislike(viewId) {
-    this.dislikes.add(viewId);
+    this.tally("dislikes", viewId);
+  }
+
+  tally(type, viewId) {
+    if (!this[type].has(viewId)) {
+      this[type].add(viewId);
+    } else {
+      this[type].delete(viewId);
+    }
 
     this.notify();
   }
 
-  reset(viewId) {
+  reset() {
     this.likes.clear();
     this.dislikes.clear();
 
