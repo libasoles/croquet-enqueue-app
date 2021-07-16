@@ -7,6 +7,11 @@
   cursor: pointer;
 }
 
+.restartTimer {
+  border: none;
+  background: transparent;
+}
+
 .toast {
   display: flex;
   align-items: center;

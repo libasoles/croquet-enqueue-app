@@ -67,6 +67,7 @@
   padding: 2px 7px;
   background: #86d886;
   visibility: hidden;
+  font-size: 0.8rem !important;
 }
 
 .speakerFinished:hover {

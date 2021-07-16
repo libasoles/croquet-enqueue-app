@@ -36,7 +36,7 @@ export class TimerView extends Croquet.View {
   }
 
   handleUpdate(seconds) {
-    this.domNode.textContent = this.toISOTime(seconds);
+    this.domNode.querySelector(".time").textContent = this.toISOTime(seconds);
   }
 
   toISOTime(seconds) {
