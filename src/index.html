@@ -100,20 +100,24 @@
         </div>
       </main>
 
-      <aside id="sharedNotesContainer">
+      <aside id="sharedNotesModal" class="modal sharedNotesModal">
         <header>
+          <button class="button icon close">x</button>
+        </header>
+
+        <div class="title">Notas compartidas</div>
+
+        <form>
+          <textarea id="sharedNotes" placeholder="..." disabled></textarea>
+        </form>
+
+        <div class="context">
           <label>
             <input type="checkbox" id="sharedNotesToggleEdition" />
             Editar
           </label>
           <span id="sharedNotesEditors" class="info"></span>
-        </header>
-
-        <textarea
-          id="sharedNotes"
-          placeholder="Notas compartidas"
-          disabled
-        ></textarea>
+        </div>
       </aside>
     </div>
 

@@ -1,13 +1,15 @@
-#sharedNotesContainer {
-  margin: 5px 10px 0;
+.sharedNotesModal {
+  margin: 0 10px;
   width: 300px;
   display: flex;
   flex-direction: column;
   visibility: hidden;
+  position: relative;
 }
 
-#sharedNotesContainer header {
-  margin: 0px;
+.sharedNotesModal .context {
+  display: block;
+  margin: 10px 0px;
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -16,22 +18,30 @@
   font-size: 0.8rem;
 }
 
-#sharedNotesContainer header > label,
-#sharedNotesContainer header > label > input {
+.sharedNotesModal header > label,
+.sharedNotesModal header > label > input {
   cursor: pointer;
 }
 
-#sharedNotesContainer header > label > input {
+.sharedNotesModal header > label > input {
   width: 10px;
 }
 
-#sharedNotesContainer header > .info {
+.sharedNotesModal header > .info {
   font-size: 0.75rem;
 }
 
-#sharedNotesContainer textarea {
+.sharedNotesModal form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.sharedNotesModal textarea {
   height: 100%;
-  margin-top: 5px;
+  margin: 5px 0 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 @media (max-width: 640px) {
@@ -44,7 +54,7 @@
     width: 100vw;
   }
 
-  #sharedNotesContainer {
+  .sharedNotesModal {
     position: fixed;
     z-index: 2;
     top: 0px;
@@ -55,13 +65,7 @@
     background: var(--secondaryBackground);
   }
 
-  #sharedNotesContainer header {
-    color: var(--secondaryFontColor);
-    font-size: 0.95rem;
-  }
-
-  #sharedNotesContainer textarea {
-    height: 100vh;
+  .sharedNotesModal textarea {
     font-size: 1.1rem;
   }
 }

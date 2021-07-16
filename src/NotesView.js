@@ -1,3 +1,5 @@
+import { display, hide } from "./utils";
+
 export default class NotesView extends Croquet.View {
   constructor(model) {
     super(model);
@@ -29,16 +31,19 @@ export default class NotesView extends Croquet.View {
     toggleEditorVisibility.onclick = (event) => this.onToggleVisibility(event);
     sharedNotesToggleEdition.onchange = (event) => this.onToggleEdition(event);
     sharedNotes.oninput = (event) => this.onNotesChange(event);
+
+    sharedNotesModal.querySelector(".close").onclick = () =>
+      hide(sharedNotesModal);
   }
 
   onToggleVisibility() {
-    const currentVisibility = sharedNotesContainer.style.visibility || "hidden";
+    const currentVisibility = sharedNotesModal.style.visibility || "hidden";
 
     if (currentVisibility !== "hidden") {
-      sharedNotesContainer.style.visibility = "hidden";
+      hide(sharedNotesModal);
       toggleEditorVisibility.classList.remove("active");
     } else {
-      sharedNotesContainer.style.visibility = "visible";
+      display(sharedNotesModal);
       toggleEditorVisibility.classList.add("active");
     }
   }

@@ -1,36 +1,3 @@
-.modal {
-  visibility: hidden;
-  width: 100%;
-  height: 100%;
-  color: var(--secondaryFontColor);
-  background: var(--secondaryBackground);
-  position: absolute;
-  z-index: 3;
-  top: 0;
-  left: 0;
-  margin: 0;
-}
-
-.modal header {
-  display: flex;
-  justify-content: flex-end;
-  margin: 10px 0px;
-}
-
-.modal {
-  display: flex;
-  flex-direction: column;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-.modal .title {
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid var(--tertiaryColor);
-  width: fit-content;
-}
-
 .feedbackModal form {
   display: flex;
   flex-direction: column;

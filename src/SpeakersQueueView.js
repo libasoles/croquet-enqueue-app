@@ -1,4 +1,4 @@
-import { createCloseButton } from "./utils";
+import { createCloseButton, display, hide } from "./utils";
 
 export default class SpeakersQueueView extends Croquet.View {
   constructor(model) {
@@ -39,9 +39,9 @@ export default class SpeakersQueueView extends Croquet.View {
 
   letSpeakerTalk({ name }) {
     currentSpeakerName.textContent = name;
-    currentSpeaker.style.visibility = "visible";
-    speakerContext.style.visibility = "visible";
-    speakerFinished.style.visibility = "visible";
+    display(currentSpeaker);
+    display(speakerContext);
+    display(speakerFinished);
   }
 
   enqueueSpeaker({ name, viewId }) {
@@ -134,7 +134,7 @@ export default class SpeakersQueueView extends Croquet.View {
 
   handleEmptyQueue() {
     currentSpeakerName.textContent = "Quien quiere hablar? 👀";
-    speakerFinished.style.visibility = "hidden";
-    speakerContext.style.visibility = "hidden";
+    hide(speakerFinished);
+    hide(speakerContext);
   }
 }
