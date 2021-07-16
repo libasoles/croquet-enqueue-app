@@ -1,6 +1,5 @@
 export default class SpeakersQueue extends Croquet.Model {
   init() {
-    this.status = new Map();
     this.speakers = new Map();
     this.currentSpeaker = {};
 
@@ -11,7 +10,6 @@ export default class SpeakersQueue extends Croquet.Model {
     this.subscribe("queue", "push", this.addSpeaker);
     this.subscribe("queue", "next", this.nextSpeaker);
     this.subscribe("queue", "remove", this.removeSpeaker);
-    this.subscribe("status", "update", this.updateStatus);
   }
 
   isSomeoneTalking() {
@@ -70,12 +68,6 @@ export default class SpeakersQueue extends Croquet.Model {
 
     this.publish("queue", "current", this.currentSpeaker);
     this.resetContext();
-  }
-
-  updateStatus({ viewId, message }) {
-    this.status.set(viewId, message);
-
-    this.publish("status", "display");
   }
 
   resetContext() {

@@ -1,3 +1,5 @@
+import { createCloseButton } from "./utils";
+
 export default class SpeakersQueueView extends Croquet.View {
   constructor(model) {
     super(model);
@@ -27,7 +29,6 @@ export default class SpeakersQueueView extends Croquet.View {
     this.subscribe("queue", "empty", this.handleEmptyQueue);
     this.subscribe("queue", "alreadyQueued", this.handlePreventRequeue);
     this.subscribe("queue", "alreadyTalking", this.handlePreventRequeue);
-    this.subscribe("status", "display", this.handleDisplayStatus);
   }
 
   listenToUserEvents() {
@@ -50,10 +51,11 @@ export default class SpeakersQueueView extends Croquet.View {
     speaker.appendChild(document.createTextNode(name));
 
     if (this.viewId === viewId) {
-      const closeButton = document.createElement("button");
-      closeButton.className = "button icon eject";
-      closeButton.textContent = "x";
-      closeButton.onclick = this.onRemoveSelf.bind(this);
+      const closeButton = createCloseButton({
+        className: "eject",
+        callback: this.onRemoveSelf.bind(this),
+      });
+
       speaker.appendChild(closeButton);
     }
 
@@ -61,13 +63,16 @@ export default class SpeakersQueueView extends Croquet.View {
   }
 
   displayMessage(message) {
-    this.publish("status", "update", { viewId: this.viewId, message });
+    this.publish("status", "display", { viewId: this.viewId, message });
+  }
+
+  broadcastMessage(message) {
+    this.publish("status", "broadcast", { viewId: this.viewId, message });
   }
 
   onSpeakerNameChange() {
     if (speakerName.value) {
       speakerName.classList.remove("errored");
-      this.displayMessage("");
     }
   }
 
@@ -95,7 +100,7 @@ export default class SpeakersQueueView extends Croquet.View {
 
   handleCurrentSpeakerTurn(speaker) {
     if (speaker.name) {
-      this.displayMessage("Esta hablando " + speaker.name);
+      this.broadcastMessage("Esta hablando " + speaker.name);
     }
 
     if (queuedSpeakers.firstChild)
@@ -131,11 +136,5 @@ export default class SpeakersQueueView extends Croquet.View {
     currentSpeakerName.textContent = "Quien quiere hablar? 👀";
     speakerFinished.style.visibility = "hidden";
     speakerContext.style.visibility = "hidden";
-
-    this.displayMessage("");
-  }
-
-  handleDisplayStatus() {
-    message.textContent = this.model.status.get(this.viewId) || "";
   }
 }

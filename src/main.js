@@ -1,4 +1,5 @@
 import Timer, { TimerView } from "./Timer";
+import Toast, { ToastView } from "./Toast";
 import SpeakersQueue from "./SpeakersQueue";
 import SpeakersQueueView from "./SpeakersQueueView";
 import SpeakerFeedback, { SpeakerFeedbackView } from "./SpeakerFeedback";
@@ -12,6 +13,7 @@ class App extends Croquet.Model {
     this.speakerTimer = Timer.create({ eventsIdentifier: "speakerTimer" });
     this.speakerFeedback = SpeakerFeedback.create();
     this.notes = Notes.create();
+    this.toast = Toast.create();
   }
 }
 
@@ -26,6 +28,7 @@ class AppView extends Croquet.View {
     new SpeakerFeedbackView(model.speakerFeedback, like, "likes");
     new SpeakerFeedbackView(model.speakerFeedback, dislike, "dislikes");
     new NotesView(model.notes);
+    new ToastView(model.toast);
   }
 }
 
@@ -34,6 +37,7 @@ Timer.register("GlobalTimer");
 SpeakersQueue.register("SpeakersQueue");
 SpeakerFeedback.register("SpeakerFeedback");
 Notes.register("Notes");
+Toast.register("Toast");
 
 Croquet.Session.join({
   appId: "io.codepen.croquet.enqueueApp",
