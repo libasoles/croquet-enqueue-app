@@ -15,9 +15,11 @@
       <main class="container">
         <section>
           <div class="currentSpeakerContainer">
-            <div id="currentSpeaker">
+            <div id="currentSpeaker" class="speakerRow">
               <span id="currentSpeakerName"></span>
-              <button id="speakerFinished" class="button">✔ Listo</button>
+              <button id="speakerFinished" class="button speakerFinished">
+                ✔ Listo
+              </button>
             </div>
 
             <div id="speakerContext" class="speakerContext">
@@ -68,7 +70,12 @@
     </div>
 
     <footer class="pageFooter">
-      <div id="toggleEditorVisibility" class="actionIcon">📝</div>
+      <button
+        id="toggleEditorVisibility"
+        class="button navigationIcon actionIcon"
+      >
+        📝
+      </button>
       <div id="globalTimer" class="timer" title="reset"></div>
     </footer>
 

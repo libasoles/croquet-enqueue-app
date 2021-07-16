@@ -34,11 +34,10 @@ body {
 .pageFooter {
   background: var(--primaryColor);
   color: var(--primaryFontColor);
-  padding: 10px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-height: var(--footerHeight);
+  height: var(--footerHeight);
 }
 
 .timer {
@@ -62,6 +61,14 @@ body {
 .button {
   cursor: pointer;
   font-size: 0.9rem;
+  background: var(--primaryColor);
+  color: var(--primaryFontColor);
+  border: none;
+  border-radius: 4px;
+}
+
+.button:focus-visible {
+  background: var(--secondaryColor);
 }
 
 .input {
@@ -77,27 +84,28 @@ body {
 }
 
 #enqueueMe {
-  background: var(--primaryColor);
-  color: var(--primaryFontColor);
   padding: 10px 8px;
-  border: none;
 }
 
 .currentSpeakerContainer {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-  font-size: 0.9em;
+}
+
+.speakerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1px 0px;
+  padding: 10px 8px;
+  color: var(--primaryFontColor);
+  font-size: 0.9rem;
 }
 
 #currentSpeaker {
-  display: flex;
   margin: 1px 0 2px 0;
-  padding: 10px 8px;
   background: var(--secondaryColor);
-  color: var(--primaryFontColor);
-  justify-content: space-between;
-  align-items: center;
   visibility: hidden;
 }
 
@@ -135,28 +143,56 @@ body {
   cursor: pointer;
 }
 
-#speakerFinished {
-  border: none;
-  background: none;
-  color: white;
-  cursor: pointer;
+.pageFooter .navigationIcon {
+  height: 100%;
+  padding: 0 10px;
+}
+
+.pageFooter .navigationIcon.active {
+  background: var(--secondaryColor);
+}
+
+.pageFooter .timer {
+  margin-right: 8px;
+}
+
+.speakerFinished {
+  color: var(--primaryFontColor);
+  padding: 2px 7px;
+  background: #86d886;
   visibility: hidden;
+}
+
+.speakerFinished:hover {
+  background: var(--tertiaryColor);
 }
 
 #queuedSpeakers {
   display: flex;
   flex-direction: column;
-
   padding-left: 0px;
   margin: 5px 0;
   margin-bottom: 10px;
 }
 
 #queuedSpeakers li {
-  margin: 1px 0px;
-  padding: 10px 8px;
   background: var(--tertiaryColor);
   color: var(--primaryFontColor);
+}
+
+#queuedSpeakers li .eject {
+  color: var(--primaryFontColor);
+  background: var(--secondaryColor);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  height: 15px;
+  width: 15px;
+}
+
+#queuedSpeakers li .eject:hover {
+  background: var(--primaryColor);
 }
 
 #message {
@@ -179,6 +215,7 @@ footer .action {
   width: 300px;
   display: flex;
   flex-direction: column;
+  visibility: hidden;
 }
 
 #sharedNotesContainer header {

@@ -32,8 +32,15 @@ export default class NotesView extends Croquet.View {
   }
 
   onToggleVisibility() {
-    sharedNotesContainer.style.visibility =
-      sharedNotesContainer.style.visibility !== "hidden" ? "hidden" : "visible";
+    const currentVisibility = sharedNotesContainer.style.visibility || "hidden";
+
+    if (currentVisibility !== "hidden") {
+      sharedNotesContainer.style.visibility = "hidden";
+      toggleEditorVisibility.classList.remove("active");
+    } else {
+      sharedNotesContainer.style.visibility = "visible";
+      toggleEditorVisibility.classList.add("active");
+    }
   }
 
   onToggleEdition(event) {

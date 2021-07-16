@@ -10,6 +10,7 @@ export default class SpeakersQueue extends Croquet.Model {
   subscribeToEvents() {
     this.subscribe("queue", "push", this.addSpeaker);
     this.subscribe("queue", "next", this.nextSpeaker);
+    this.subscribe("queue", "remove", this.removeSpeaker);
     this.subscribe("status", "update", this.updateStatus);
   }
 
@@ -44,6 +45,16 @@ export default class SpeakersQueue extends Croquet.Model {
 
     this.speakers.set(speaker.viewId, speaker);
     this.publish("queue", "add", speaker);
+  }
+
+  removeSpeaker(viewId) {
+    const speaker = this.speakers.get(viewId);
+
+    if (speaker) {
+      this.speakers.delete(viewId);
+
+      this.publish("queue", "removed", speaker);
+    }
   }
 
   nextSpeaker() {

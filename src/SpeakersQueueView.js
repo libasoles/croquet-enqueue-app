@@ -23,6 +23,7 @@ export default class SpeakersQueueView extends Croquet.View {
     this.subscribe("queue", "list", this.handleAddAll);
     this.subscribe("queue", "addFirst", this.handleAddFirstSpeaker);
     this.subscribe("queue", "add", this.handleAddSpeaker);
+    this.subscribe("queue", "removed", this.handleRemoveSpeaker);
     this.subscribe("queue", "empty", this.handleEmptyQueue);
     this.subscribe("queue", "alreadyQueued", this.handlePreventRequeue);
     this.subscribe("queue", "alreadyTalking", this.handlePreventRequeue);
@@ -42,9 +43,20 @@ export default class SpeakersQueueView extends Croquet.View {
     speakerFinished.style.visibility = "visible";
   }
 
-  enqueueSpeaker({ name }) {
+  enqueueSpeaker({ name, viewId }) {
     const speaker = document.createElement("li");
+    speaker.setAttribute("data-viewId", viewId);
+    speaker.className = "speakerRow";
     speaker.appendChild(document.createTextNode(name));
+
+    if (this.viewId === viewId) {
+      const closeButton = document.createElement("button");
+      closeButton.className = "button icon eject";
+      closeButton.textContent = "x";
+      closeButton.onclick = this.onRemoveSelf.bind(this);
+      speaker.appendChild(closeButton);
+    }
+
     queuedSpeakers.appendChild(speaker);
   }
 
@@ -77,6 +89,10 @@ export default class SpeakersQueueView extends Croquet.View {
     this.publish("queue", "next");
   }
 
+  onRemoveSelf() {
+    this.publish("queue", "remove", this.viewId);
+  }
+
   handleCurrentSpeakerTurn(speaker) {
     if (speaker.name) {
       this.displayMessage("Esta hablando " + speaker.name);
@@ -98,6 +114,13 @@ export default class SpeakersQueueView extends Croquet.View {
 
   handleAddSpeaker(speaker) {
     this.enqueueSpeaker(speaker);
+  }
+
+  handleRemoveSpeaker({ viewId }) {
+    for (const row of queuedSpeakers.childNodes) {
+      if (row.getAttribute("data-viewId") === viewId)
+        queuedSpeakers.removeChild(row);
+    }
   }
 
   handlePreventRequeue() {
