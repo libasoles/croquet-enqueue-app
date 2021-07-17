@@ -1,12 +1,3 @@
-.sharedNotesModal {
-  margin: 0 10px;
-  width: 300px;
-  display: flex;
-  flex-direction: column;
-  visibility: hidden;
-  position: relative;
-}
-
 .sharedNotesModal .context {
   display: block;
   margin: 10px 0px;
@@ -45,26 +36,6 @@
 }
 
 @media (max-width: 640px) {
-  #pageHeader,
-  #widgets {
-    display: none;
-  }
-
-  .pageContent .container {
-    width: 100vw;
-  }
-
-  .sharedNotesModal {
-    position: fixed;
-    z-index: 2;
-    top: 0px;
-    left: 0px;
-    margin: 0;
-    width: 100vw;
-    height: calc(100vh - var(--footerHeight));
-    background: var(--secondaryBackground);
-  }
-
   .sharedNotesModal textarea {
     font-size: 1.1rem;
   }

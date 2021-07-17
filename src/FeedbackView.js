@@ -1,4 +1,4 @@
-import { createElement, display, hide } from "./utils";
+import { createElement, displayModal, hideModal, toggleModal } from "./utils";
 
 export default class FeedbackView extends Croquet.View {
   constructor(model, speakersQueue) {
@@ -13,17 +13,18 @@ export default class FeedbackView extends Croquet.View {
   listenToUserEvents() {
     writeFeedback.onclick = (event) => this.onWriteFeedback(event);
     submitFeedback.onclick = (event) => this.onSubmitFeedback(event);
-    notificationsBell.onclick = (event) => this.onOpenNotifications(event);
+    notificationsBell.onclick = (event) => this.onToggleNotifications(event);
 
-    feedbackModal.querySelector(".close").onclick = () => hide(feedbackModal);
+    feedbackModal.querySelector(".close").onclick = () =>
+      hideModal(feedbackModal);
     notificationsModal.querySelector(".close").onclick = () =>
-      hide(notificationsModal);
+      hideModal(notificationsModal);
   }
 
   onWriteFeedback() {
     const currentSpeaker = this.speakersQueue.getCurrentSpeaker();
 
-    display(feedbackModal);
+    displayModal(feedbackModal);
 
     feedbackModal.querySelector(".title").textContent =
       "Feedback para " + currentSpeaker.name;
@@ -41,13 +42,17 @@ export default class FeedbackView extends Croquet.View {
       message: feedbackInput.value,
     });
 
-    hide(feedbackModal);
+    hideModal(feedbackModal);
   }
 
-  onOpenNotifications() {
-    notificationsBell.classList.remove("unread");
-
-    display(notificationsModal);
+  onToggleNotifications() {
+    toggleModal(notificationsModal, {
+      onDisplay: () => notificationsBell.classList.add("active"),
+      onHide: () => {
+        notificationsBell.classList.remove("active");
+        notificationsBell.classList.remove("unread");
+      },
+    });
   }
 
   handleIncomingFeedback(feedback) {

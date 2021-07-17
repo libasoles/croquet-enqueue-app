@@ -24,3 +24,23 @@ export function display(domNode) {
 export function hide(domNode) {
   domNode.style.visibility = "hidden";
 }
+
+export function displayModal(domNode) {
+  domNode.style.display = "flex";
+}
+
+export function hideModal(domNode) {
+  domNode.style.display = "none";
+}
+
+export function toggleModal(domNode, { onDisplay, onHide }) {
+  const currentVisibility = domNode.style.display;
+
+  if (currentVisibility && currentVisibility !== "none") {
+    hideModal(domNode);
+    onHide && onHide();
+  } else {
+    displayModal(domNode);
+    onDisplay && onDisplay();
+  }
+}

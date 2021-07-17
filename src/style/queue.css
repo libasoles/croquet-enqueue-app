@@ -28,18 +28,18 @@
 }
 
 #currentSpeaker {
+  visibility: hidden;
   margin: 1px 0 2px 0;
   background: var(--secondaryColor);
-  visibility: hidden;
 }
 
 .speakerContext {
+  visibility: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 0 0 4px 2px;
   color: var(--secondaryFontColor);
-  visibility: hidden;
 }
 
 .speakerContext .feedback {
@@ -79,10 +79,10 @@
 }
 
 .speakerFinished {
+  visibility: hidden;
   color: var(--primaryFontColor);
   padding: 2px 7px;
   background: #86d886;
-  visibility: hidden;
   font-size: 0.8rem !important;
 }
 

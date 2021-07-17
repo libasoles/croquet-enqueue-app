@@ -88,19 +88,9 @@
             </button>
           </form>
         </div>
-
-        <div id="notificationsModal" class="modal notificationsModal">
-          <header>
-            <button class="button icon close">x</button>
-          </header>
-
-          <div class="title">Feedback recibido</div>
-
-          <ol id="notificationsList"></ol>
-        </div>
       </main>
 
-      <aside id="sharedNotesModal" class="modal sharedNotesModal">
+      <aside id="sharedNotesModal" class="modal undocked sharedNotesModal">
         <header>
           <button class="button icon close">x</button>
         </header>
@@ -118,6 +108,16 @@
           </label>
           <span id="sharedNotesEditors" class="info"></span>
         </div>
+      </aside>
+
+      <aside id="notificationsModal" class="modal undocked notificationsModal">
+        <header>
+          <button class="button icon close">x</button>
+        </header>
+
+        <div class="title">Feedback recibido</div>
+
+        <ol id="notificationsList"></ol>
       </aside>
     </div>
 

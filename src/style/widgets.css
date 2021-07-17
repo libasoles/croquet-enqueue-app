@@ -12,6 +12,10 @@
   background: transparent;
 }
 
+.notificationsBell.active {
+  background: var(--tertiaryColor);
+}
+
 .shakingBell.unread {
   animation: shake-animation 1.72s ease infinite;
   transform-origin: 50% 50%;
