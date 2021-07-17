@@ -60,6 +60,17 @@ export default class FeedbackView extends Croquet.View {
 
     notificationsBell.classList.add("unread");
 
+    this.publish("toast", "display", {
+      sticky: true,
+      message: `🔔 ${feedback.from.name} te dejo feedack.`,
+    });
+
+    this.prependFeedbackRow();
+
+    feedbackInput.value = "";
+  }
+
+  prependFeedbackRow() {
     const notification = createElement({
       type: "li",
       className: "notification",

@@ -66,11 +66,11 @@ export default class SpeakersQueueView extends Croquet.View {
   }
 
   displayMessage(message) {
-    this.publish("status", "display", { viewId: this.viewId, message });
+    this.publish("toast", "display", { viewId: this.viewId, message });
   }
 
   broadcastMessage(message) {
-    this.publish("status", "broadcast", { viewId: this.viewId, message });
+    this.publish("toast", "broadcast", { viewId: this.viewId, message });
   }
 
   onSpeakerNameChange() {

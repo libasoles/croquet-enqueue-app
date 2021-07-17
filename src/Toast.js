@@ -2,11 +2,11 @@ import { createElement, createCloseButton } from "./utils";
 
 export default class Toast extends Croquet.Model {
   init() {
-    this.subscribe("status", "broadcast", this.updateStatus);
+    this.subscribe("toast", "broadcast", this.updateStatus);
   }
 
   updateStatus(status) {
-    this.publish("status", "display", status);
+    this.publish("toast", "display", status);
   }
 }
 
@@ -15,10 +15,10 @@ export class ToastView extends Croquet.View {
     super(model);
     this.model = model;
 
-    this.subscribe("status", "display", this.handleDisplayStatus);
+    this.subscribe("toast", "display", this.handleDisplayStatus);
   }
 
-  handleDisplayStatus({ message }) {
+  handleDisplayStatus({ message, sticky = false }) {
     const toast = createElement({
       type: "div",
       className: "toast",
@@ -33,6 +33,8 @@ export class ToastView extends Croquet.View {
     toast.appendChild(closeButton);
 
     messages.appendChild(toast);
+
+    if (sticky) return;
 
     setTimeout(() => {
       this.close(toast);
