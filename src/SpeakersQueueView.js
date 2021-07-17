@@ -1,4 +1,10 @@
-import { createElement, createCloseButton, display, hide } from "./utils";
+import {
+  createElement,
+  createCloseButton,
+  display,
+  hide,
+  isSelf,
+} from "./utils";
 
 export default class SpeakersQueueView extends Croquet.View {
   constructor(model) {
@@ -53,16 +59,20 @@ export default class SpeakersQueueView extends Croquet.View {
     speaker.setAttribute("data-viewId", viewId);
     speaker.appendChild(document.createTextNode(name));
 
-    if (this.viewId === viewId) {
-      const closeButton = createCloseButton({
-        className: "eject",
-        callback: this.onRemoveSelf.bind(this),
-      });
-
-      speaker.appendChild(closeButton);
+    if (isSelf(this.viewId, viewId)) {
+      this.appendCloseButton(speaker);
     }
 
     queuedSpeakers.appendChild(speaker);
+  }
+
+  appendCloseButton(speaker) {
+    const closeButton = createCloseButton({
+      className: "eject",
+      callback: this.onRemoveSelf.bind(this),
+    });
+
+    speaker.appendChild(closeButton);
   }
 
   displayMessage(message) {
@@ -82,8 +92,9 @@ export default class SpeakersQueueView extends Croquet.View {
   onEnqueueSpeaker() {
     if (!speakerName.value) {
       this.displayMessage("Completá tu nombre 👽");
-      speakerName.classList.add("errored");
-      speakerName.focus();
+
+      this.publish("identity", "validationError", { viewId: this.viewId });
+
       return;
     }
 

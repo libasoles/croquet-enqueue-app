@@ -1,3 +1,18 @@
+export function isSelf(viewId, anotherViewId) {
+  return viewId === anotherViewId;
+}
+
+export function readCookie(name) {
+  const result = document.cookie
+    .split(";")
+    .map((rawCookie) => rawCookie.split("="))
+    .find((cookie) => cookie[0] === name);
+
+  if (!result) return;
+
+  return result.reduce((_, value) => value);
+}
+
 export function createCloseButton({ className, callback }) {
   const closeButton = document.createElement("button");
   closeButton.className = `button icon ${className}`;
@@ -18,11 +33,11 @@ export function createElement({ type, ...options }) {
 }
 
 export function display(domNode) {
-  domNode.style.visibility = "visible";
+  domNode.classList.remove("hidden");
 }
 
 export function hide(domNode) {
-  domNode.style.visibility = "hidden";
+  domNode.classList.add("hidden");
 }
 
 export function displayModal(domNode) {

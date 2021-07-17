@@ -28,13 +28,11 @@
 }
 
 #currentSpeaker {
-  visibility: hidden;
   margin: 1px 0 2px 0;
   background: var(--secondaryColor);
 }
 
 .speakerContext {
-  visibility: hidden;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -79,7 +77,6 @@
 }
 
 .speakerFinished {
-  visibility: hidden;
   color: var(--primaryFontColor);
   padding: 2px 7px;
   background: #86d886;

@@ -1,6 +1,7 @@
 import Timer, { TimerView } from "./Timer";
 import Topic, { TopicView } from "./Topic";
 import Toast, { ToastView } from "./Toast";
+import { IdentityView } from "./Identity";
 import SpeakersQueue from "./SpeakersQueue";
 import SpeakersQueueView from "./SpeakersQueueView";
 import Reaction from "./Reaction";
@@ -30,6 +31,7 @@ class AppView extends Croquet.View {
 
     new TimerView(model.globalTimer, globalTimer);
     new TopicView(model.topic);
+    new IdentityView(model);
     new SpeakersQueueView(model.speakersQueue);
     new TimerView(model.speakerTimer, speakerTimer, "speakerTimer");
     new ReactionView(model.reaction, like, "likes");

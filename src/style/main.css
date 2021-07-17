@@ -80,6 +80,10 @@ textarea:disabled {
   border: none;
 }
 
+.hidden {
+  display: none;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;

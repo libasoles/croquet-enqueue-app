@@ -49,6 +49,18 @@
   transform: scale(0.8);
 }
 
+.identity {
+  color: var(--secondaryFontColor);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 200px;
+}
+
+.identity .name {
+  padding: 0 15px;
+}
+
 #widgets {
   top: 70px;
 }

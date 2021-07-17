@@ -31,14 +31,17 @@
       <main class="mainSection">
         <section>
           <div class="currentSpeakerContainer">
-            <div id="currentSpeaker" class="speakerRow">
+            <div id="currentSpeaker" class="speakerRow hidden">
               <span id="currentSpeakerName"></span>
-              <button id="speakerFinished" class="button speakerFinished">
+              <button
+                id="speakerFinished"
+                class="button speakerFinished hidden"
+              >
                 ✔ Listo
               </button>
             </div>
 
-            <div id="speakerContext" class="speakerContext">
+            <div id="speakerContext" class="speakerContext hidden">
               <div class="feedback">
                 <button id="writeFeedback" class="button writeFeedback">
                   ✍️ feedback
@@ -77,7 +80,16 @@
           <div class="action">
             <button id="enqueueMe" class="button">Quiero hablar ✋</button>
 
-            <input id="speakerName" class="input" placeholder="Tu nombre" />
+            <input
+              id="speakerName"
+              class="input"
+              placeholder="Tu nombre"
+              maxlength="21"
+            />
+            <div id="identity" class="identity hidden">
+              <span class="name"></span>
+              <button class="button icon close">x</button>
+            </div>
           </div>
         </footer>
 
