@@ -27,10 +27,12 @@ export function hide(domNode) {
 
 export function displayModal(domNode) {
   domNode.style.display = "flex";
+  domNode.classList.add("active");
 }
 
 export function hideModal(domNode) {
   domNode.style.display = "none";
+  domNode.classList.remove("active");
 }
 
 export function toggleModal(domNode, { onDisplay, onHide }) {
