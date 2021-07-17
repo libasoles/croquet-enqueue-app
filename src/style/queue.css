@@ -1,5 +1,5 @@
 .pageContent .mainSection {
-  background: var(--secondaryBackground);
+  background: var(--secondaryDark);
   padding: 5px 5px 10px 5px;
   display: flex;
   flex-direction: column;

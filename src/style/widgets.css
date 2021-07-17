@@ -12,6 +12,19 @@
   background: transparent;
 }
 
+.pageTitle {
+  width: 300px;
+  max-height: 50px;
+  background: transparent;
+  border: none;
+  color: #1b581b;
+  font-size: 1.1rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+}
+
 .notificationsBell.active {
   background: var(--tertiaryColor);
 }

@@ -8,17 +8,23 @@
   --primaryColor: #5cb270;
   --secondaryColor: #82c26e;
   --tertiaryColor: #a8d26d;
-  --primaryBackground: #1a1b1a;
-  --secondaryBackground: #353535;
-  --footerHeight: 40px;
+  --primaryDark: #1a1b1a;
+  --secondaryDark: #353535;
   --primaryFontColor: white;
   --secondaryFontColor: #c2c2c2;
   --tertiaryFontColor: #939393;
+  --headerHeight: 60px;
+  --footerHeight: 40px;
 }
 
 html,
 body {
   height: 100%;
+}
+
+*,
+body {
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -27,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: var(--primaryBackground);
+  background: var(--primaryDark);
 }
 
 .button {
@@ -50,7 +56,7 @@ body {
 .input {
   padding: 10px 8px;
   border: 1px solid #474948;
-  background: var(--primaryBackground);
+  background: var(--primaryDark);
   color: var(--secondaryFontColor);
   font-size: 0.9rem;
 }
@@ -60,9 +66,10 @@ body {
 }
 
 textarea {
-  background: var(--secondaryBackground);
+  background: var(--secondaryDark);
   color: var(--secondaryFontColor);
   padding: 5px;
+  resize: none;
 }
 
 textarea::placeholder {
