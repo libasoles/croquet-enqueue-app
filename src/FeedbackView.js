@@ -17,8 +17,10 @@ export default class FeedbackView extends Croquet.View {
 
     feedbackModal.querySelector(".close").onclick = () =>
       hideModal(feedbackModal);
-    notificationsModal.querySelector(".close").onclick = () =>
+    notificationsModal.querySelector(".close").onclick = () => {
       hideModal(notificationsModal);
+      notificationsBell.classList.remove("active");
+    };
   }
 
   onWriteFeedback() {
@@ -47,10 +49,12 @@ export default class FeedbackView extends Croquet.View {
 
   onToggleNotifications() {
     toggleModal(notificationsModal, {
-      onDisplay: () => notificationsBell.classList.add("active"),
+      onDisplay: () => {
+        notificationsBell.classList.add("active");
+        notificationsBell.classList.remove("unread");
+      },
       onHide: () => {
         notificationsBell.classList.remove("active");
-        notificationsBell.classList.remove("unread");
       },
     });
   }
@@ -65,12 +69,12 @@ export default class FeedbackView extends Croquet.View {
       message: `🔔 ${feedback.from.name} te dejo feedack.`,
     });
 
-    this.prependFeedbackRow();
+    this.prependFeedbackRow(feedback);
 
     feedbackInput.value = "";
   }
 
-  prependFeedbackRow() {
+  prependFeedbackRow(feedback) {
     const notification = createElement({
       type: "li",
       className: "notification",

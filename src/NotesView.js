@@ -52,6 +52,8 @@ export default class NotesView extends Croquet.View {
     });
 
     sharedNotes.disabled = !isEditing;
+
+    if (isEditing) sharedNotes.focus();
   }
 
   onNotesChange(keyboardEvent) {
