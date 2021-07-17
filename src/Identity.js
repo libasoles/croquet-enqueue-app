@@ -1,5 +1,39 @@
 import { display, hide, isSelf, readCookie } from "./utils";
 
+export default class Identity extends Croquet.Model {
+  init() {
+    this.connectedUsers = {};
+    this.subscribe(this.sessionId, "view-join", this.addUser);
+    this.subscribe(this.sessionId, "view-exit", this.deleteUser);
+    this.subscribe("identity", "nameChanged", this.updateUser);
+  }
+
+  addUser(viewId) {
+    this.connectedUsers[viewId] = {
+      start: this.now(),
+      viewId,
+      userName: "",
+    };
+  }
+
+  updateUser({ viewId, userName }) {
+    if (this.connectedUsers[viewId])
+      this.connectedUsers[viewId].userName = userName;
+  }
+
+  deleteUser(viewId) {
+    delete this.connectedUsers[viewId];
+  }
+
+  user(viewId) {
+    return this.connectedUsers[viewId];
+  }
+
+  me() {
+    return this.connectedUsers[this.sessionId];
+  }
+}
+
 export class IdentityView extends Croquet.View {
   constructor(model) {
     super(model);
@@ -16,6 +50,11 @@ export class IdentityView extends Croquet.View {
     if (userName) {
       speakerName.value = userName;
       this.displayIdentity(userName);
+
+      this.publish("identity", "nameChanged", {
+        viewId: this.viewId,
+        userName,
+      });
     }
   }
 
@@ -25,7 +64,8 @@ export class IdentityView extends Croquet.View {
   }
 
   listenToUserEvents() {
-    speakerName.onkeyup = (event) => this.onSpeakerNameChange(event);
+    speakerName.onkeyup = (event) => this.onUserTyping(event);
+    speakerName.change = (event) => this.onSpeakerNameChange(event);
     identity.querySelector(".close").onclick = (event) =>
       this.onEditName(event);
   }
@@ -43,10 +83,17 @@ export class IdentityView extends Croquet.View {
     }
   }
 
-  onSpeakerNameChange() {
+  onUserTyping() {
     if (speakerName.value) {
       speakerName.classList.remove("errored");
     }
+  }
+
+  onSpeakerNameChange() {
+    this.publish("identity", "changed", {
+      viewId: this.viewId,
+      userName: speakerName.value,
+    });
   }
 
   onEditName() {

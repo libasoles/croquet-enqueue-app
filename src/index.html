@@ -43,19 +43,28 @@
 
             <div id="speakerContext" class="speakerContext hidden">
               <div class="feedback">
-                <button id="writeFeedback" class="button writeFeedback">
+                <button id="writeFeedback" class="button writeFeedback action">
                   ✍️ feedback
                 </button>
 
+                <button
+                  id="jumpInConversation"
+                  class="button jumpInConversation action"
+                >
+                  ✋ me meto
+                </button>
+
+                <div class="spacer" style="width: 50px"></div>
+
                 <div class="reactions">
-                  <div id="like" class="reaction">
+                  <button id="like" class="button action reaction">
                     <span class="count">0</span>
                     <span class="icon actionIcon">👍</span>
-                  </div>
-                  <div id="dislike" class="reaction">
+                  </button>
+                  <button id="dislike" class="button action reaction">
                     <span class="icon actionIcon">👎</span>
                     <span class="count">0</span>
-                  </div>
+                  </button>
                 </div>
               </div>
 
@@ -69,6 +78,8 @@
                 <span class="restartTimer">🟣</span>
               </button>
             </div>
+
+            <div id="interventions" class="interventions"></div>
           </div>
 
           <ol id="queuedSpeakers"></ol>

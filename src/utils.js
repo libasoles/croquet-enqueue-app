@@ -14,10 +14,12 @@ export function readCookie(name) {
 }
 
 export function createCloseButton({ className, callback }) {
-  const closeButton = document.createElement("button");
-  closeButton.className = `button icon ${className}`;
-  closeButton.textContent = "x";
-  closeButton.onclick = callback;
+  const closeButton = createElement({
+    type: "button",
+    className: `button icon close ${className}`,
+    textContent: "x",
+    onclick: callback,
+  });
 
   return closeButton;
 }

@@ -52,18 +52,18 @@
   justify-content: space-between;
 }
 
-.speakerContext .writeFeedback {
+.speakerContext .action {
   font-size: 0.75rem;
   background: none;
 }
 
 .speakerContext .timer {
-  margin: 0 5px 0 5px;
+  margin: 0 0 0 3px;
   font-size: 0.65rem;
   min-width: 45px;
   text-align: right;
   background: none;
-  padding-left: 2px;
+  padding: 0 2px 0 5px;
 }
 
 .speakerContext .reaction {
@@ -85,6 +85,23 @@
 
 .speakerFinished:hover {
   background: var(--tertiaryColor);
+}
+
+.interventions {
+  display: flex;
+  flex-direction: column;
+  color: var(--secondaryFontColor);
+  font-size: 0.8rem;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.interventions .name {
+  margin-right: 4px;
+}
+
+.interventions .close {
+  transform: scale(0.75);
 }
 
 #queuedSpeakers {

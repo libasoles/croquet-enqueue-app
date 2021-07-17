@@ -1,7 +1,7 @@
 import Timer, { TimerView } from "./Timer";
 import Topic, { TopicView } from "./Topic";
 import Toast, { ToastView } from "./Toast";
-import { IdentityView } from "./Identity";
+import Identity, { IdentityView } from "./Identity";
 import SpeakersQueue from "./SpeakersQueue";
 import SpeakersQueueView from "./SpeakersQueueView";
 import Reaction from "./Reaction";
@@ -13,9 +13,10 @@ import NotesView from "./NotesView";
 
 class App extends Croquet.Model {
   init() {
+    this.identity = Identity.create();
     this.globalTimer = Timer.create();
     this.topic = Topic.create();
-    this.speakersQueue = SpeakersQueue.create();
+    this.speakersQueue = SpeakersQueue.create({ identity: this.identity });
     this.speakerTimer = Timer.create({ eventsIdentifier: "speakerTimer" });
     this.reaction = Reaction.create();
     this.feedback = Feedback.create();
@@ -43,6 +44,7 @@ class AppView extends Croquet.View {
 }
 
 App.register("App");
+Identity.register("Identity");
 Timer.register("GlobalTimer");
 Topic.register("Topic");
 SpeakersQueue.register("SpeakersQueue");

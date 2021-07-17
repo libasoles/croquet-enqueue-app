@@ -35,12 +35,14 @@ export default class SpeakersQueueView extends Croquet.View {
     this.subscribe("queue", "empty", this.handleEmptyQueue);
     this.subscribe("queue", "alreadyQueued", this.handlePreventRequeue);
     this.subscribe("queue", "alreadyTalking", this.handlePreventRequeue);
+    this.subscribe("queue", "addIntervention", this.handleIntervention);
   }
 
   listenToUserEvents() {
     enqueueMe.onclick = (event) => this.onEnqueueSpeaker(event);
     speakerFinished.onclick = (event) => this.onRemoveSpeaker(event);
     speakerName.onkeyup = (event) => this.onSpeakerNameChange(event);
+    jumpInConversation.onclick = (event) => this.onJumpIn(event);
   }
 
   letSpeakerTalk({ name }) {
@@ -112,6 +114,10 @@ export default class SpeakersQueueView extends Croquet.View {
     this.publish("queue", "remove", this.viewId);
   }
 
+  onJumpIn() {
+    this.publish("queue", "intervene", this.viewId);
+  }
+
   handleCurrentSpeakerTurn(speaker) {
     if (speaker.name) {
       this.broadcastMessage("Esta hablando " + speaker.name);
@@ -129,6 +135,30 @@ export default class SpeakersQueueView extends Croquet.View {
 
   handleAddFirstSpeaker(speaker) {
     this.letSpeakerTalk(speaker);
+  }
+
+  handleIntervention({ userName }) {
+    const speakerRow = createElement({
+      type: "div",
+      className: "user",
+    });
+
+    const speakerName = createElement({
+      type: "span",
+      className: "name",
+      textContent: `✋ ${userName}`,
+    });
+
+    const closeButton = createCloseButton({
+      callback: () => {
+        speakerRow.remove();
+      },
+    });
+
+    speakerRow.appendChild(speakerName);
+    speakerRow.appendChild(closeButton);
+
+    interventions.appendChild(speakerRow);
   }
 
   handleAddSpeaker(speaker) {
