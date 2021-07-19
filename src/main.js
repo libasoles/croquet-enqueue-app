@@ -30,16 +30,24 @@ class AppView extends Croquet.View {
     super(model);
     this.model = model;
 
-    new TimerView(model.globalTimer, globalTimer);
-    new TopicView(model.topic);
-    new IdentityView(model);
-    new SpeakersQueueView(model.speakersQueue);
-    new TimerView(model.speakerTimer, speakerTimer, "speakerTimer");
-    new ReactionView(model.reaction, like, "likes");
-    new ReactionView(model.reaction, dislike, "dislikes");
-    new FeedbackView(model.feedback, model.speakersQueue);
-    new NotesView(model.notes);
-    new ToastView(model.toast);
+    this.views = [
+      new TimerView(model.globalTimer, globalTimer),
+      new TopicView(model.topic),
+      new IdentityView(model),
+      new SpeakersQueueView(model.speakersQueue),
+      new TimerView(model.speakerTimer, speakerTimer, "speakerTimer"),
+      new ReactionView(model.reaction, like, "likes"),
+      new ReactionView(model.reaction, dislike, "dislikes"),
+      new FeedbackView(model.feedback, model.speakersQueue),
+      new NotesView(model.notes),
+      new ToastView(model.toast),
+    ];
+  }
+
+  detach() {
+    super.detach();
+
+    this.views.forEach((view) => view.detach());
   }
 }
 
@@ -55,8 +63,8 @@ Toast.register("Toast");
 
 Croquet.Session.join({
   appId: "io.codepen.croquet.enqueueApp",
-  name: window.location.pathname,
-  password: "secret",
+  name: Croquet.App.autoSession(),
+  password: Croquet.App.autoPassword(),
   model: App,
   view: AppView,
 });
