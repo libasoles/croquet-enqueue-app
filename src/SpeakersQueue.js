@@ -100,5 +100,6 @@ export default class SpeakersQueue extends Croquet.Model {
   resetSpeakerContext() {
     this.publish("reaction", "reset");
     this.publish("speakerTimer", "reset");
+    this.interventies.clear();
   }
 }
