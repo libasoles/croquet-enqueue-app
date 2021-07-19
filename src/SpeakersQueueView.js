@@ -42,7 +42,7 @@ export default class SpeakersQueueView extends Croquet.View {
     enqueueMe.onclick = (event) => this.onEnqueueSpeaker(event);
     speakerFinished.onclick = (event) => this.onRemoveSpeaker(event);
     speakerName.onkeyup = (event) => this.onSpeakerNameChange(event);
-    jumpInConversation.onclick = (event) => this.onJumpIn(event);
+    interveneConversation.onclick = (event) => this.onIntervention(event);
   }
 
   letSpeakerTalk({ name }) {
@@ -114,7 +114,7 @@ export default class SpeakersQueueView extends Croquet.View {
     this.publish("queue", "remove", this.viewId);
   }
 
-  onJumpIn() {
+  onIntervention() {
     this.publish("queue", "intervene", this.viewId);
   }
 
