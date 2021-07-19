@@ -165,7 +165,9 @@ export default class SpeakersQueueView extends Croquet.View {
     }
   }
 
-  handlePreventRequeue() {
+  handlePreventRequeue({ viewId }) {
+    if (!isSelf(this.viewId, viewId)) return;
+
     this.displayMessage("Ya estas para hablar.");
   }
 

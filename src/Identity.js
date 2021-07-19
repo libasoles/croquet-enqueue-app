@@ -90,7 +90,9 @@ export class IdentityView extends Croquet.View {
     }
   }
 
-  onSpeakerNameChange(event) {
+  onSpeakerNameChange() {
+    if (!speakerName.value) return;
+
     document.cookie = `userName=${speakerName.value}`;
 
     this.displayIdentity(speakerName.value);
