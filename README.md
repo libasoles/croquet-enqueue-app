@@ -16,6 +16,11 @@ This app also adds some other features, like sending feedback to speakers, colla
 
 ![Demo](https://github.com/libasoles/croquet-enqueue-app/blob/main/demo.gif)
 
+
+### Desktop
+
+![Desktop demo](https://github.com/libasoles/croquet-enqueue-app/blob/main/desktopSnapshot.png)
+
 ## How to run
 
 `yarn start`
