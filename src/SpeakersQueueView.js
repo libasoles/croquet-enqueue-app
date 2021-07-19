@@ -41,7 +41,6 @@ export default class SpeakersQueueView extends Croquet.View {
   listenToUserEvents() {
     enqueueMe.onclick = (event) => this.onEnqueueSpeaker(event);
     speakerFinished.onclick = (event) => this.onRemoveSpeaker(event);
-    speakerName.onkeyup = (event) => this.onSpeakerNameChange(event);
     interveneConversation.onclick = (event) => this.onIntervention(event);
   }
 
@@ -83,12 +82,6 @@ export default class SpeakersQueueView extends Croquet.View {
 
   broadcastMessage(message) {
     this.publish("toast", "broadcast", { viewId: this.viewId, message });
-  }
-
-  onSpeakerNameChange() {
-    if (speakerName.value) {
-      speakerName.classList.remove("errored");
-    }
   }
 
   onEnqueueSpeaker() {

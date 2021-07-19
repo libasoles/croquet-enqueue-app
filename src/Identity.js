@@ -51,29 +51,19 @@ export class IdentityView extends Croquet.View {
       speakerName.value = userName;
       this.displayIdentity(userName);
 
-      this.publish("identity", "nameChanged", {
-        viewId: this.viewId,
-        userName,
-      });
+      this.publishName();
     }
   }
 
   subscribeToEvents() {
     this.subscribe("identity", "validationError", this.handleValidationError);
-    this.subscribe("queue", "push", this.handleCreate);
   }
 
   listenToUserEvents() {
     speakerName.onkeyup = (event) => this.onUserTyping(event);
-    speakerName.change = (event) => this.onSpeakerNameChange(event);
+    speakerName.onchange = (event) => this.onSpeakerNameChange(event);
     identity.querySelector(".close").onclick = (event) =>
       this.onEditName(event);
-  }
-
-  handleCreate() {
-    document.cookie = `userName=${speakerName.value}`;
-
-    this.displayIdentity(speakerName.value);
   }
 
   handleValidationError({ viewId }) {
@@ -83,17 +73,29 @@ export class IdentityView extends Croquet.View {
     }
   }
 
-  onUserTyping() {
+  publishName() {
+    this.publish("identity", "nameChanged", {
+      viewId: this.viewId,
+      userName: speakerName.value,
+    });
+  }
+
+  onUserTyping(event) {
+    if (event.keyCode === 13) {
+      this.onSpeakerNameChange();
+    }
+
     if (speakerName.value) {
       speakerName.classList.remove("errored");
     }
   }
 
-  onSpeakerNameChange() {
-    this.publish("identity", "changed", {
-      viewId: this.viewId,
-      userName: speakerName.value,
-    });
+  onSpeakerNameChange(event) {
+    document.cookie = `userName=${speakerName.value}`;
+
+    this.displayIdentity(speakerName.value);
+
+    this.publishName();
   }
 
   onEditName() {
