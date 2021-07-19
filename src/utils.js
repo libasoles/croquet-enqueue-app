@@ -43,17 +43,17 @@ export function hide(domNode) {
 }
 
 export function displayModal(domNode) {
-  domNode.style.display = "flex";
   domNode.classList.add("active");
+  display(domNode);
 }
 
 export function hideModal(domNode) {
-  domNode.style.display = "none";
+  hide(domNode);
   domNode.classList.remove("active");
 }
 
 export function toggleModal(domNode, { onDisplay, onHide }) {
-  const currentVisibility = domNode.style.display;
+  const currentVisibility = getElementStyle(domNode, "display");
 
   if (currentVisibility && currentVisibility !== "none") {
     hideModal(domNode);
@@ -62,4 +62,12 @@ export function toggleModal(domNode, { onDisplay, onHide }) {
     displayModal(domNode);
     onDisplay && onDisplay();
   }
+}
+
+function getElementStyle(domNode, name) {
+  return domNode.currentStyle
+    ? domNode.currentStyle[name]
+    : window.getComputedStyle
+    ? window.getComputedStyle(domNode, null).getPropertyValue(name)
+    : null;
 }
