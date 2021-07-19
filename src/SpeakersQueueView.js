@@ -36,6 +36,11 @@ export default class SpeakersQueueView extends Croquet.View {
     this.subscribe("queue", "alreadyQueued", this.handlePreventRequeue);
     this.subscribe("queue", "alreadyTalking", this.handlePreventRequeue);
     this.subscribe("queue", "addIntervention", this.handleIntervention);
+    this.subscribe(
+      "queue",
+      "revomeIntervention",
+      this.handleRemoveIntervention
+    );
   }
 
   listenToUserEvents() {
@@ -130,11 +135,13 @@ export default class SpeakersQueueView extends Croquet.View {
     this.letSpeakerTalk(speaker);
   }
 
-  handleIntervention({ userName }) {
+  handleIntervention({ viewId, userName }) {
     const speakerRow = createElement({
       type: "div",
       className: "user",
     });
+
+    speakerRow.setAttribute("data-viewId", viewId);
 
     const speakerName = createElement({
       type: "span",
@@ -142,16 +149,26 @@ export default class SpeakersQueueView extends Croquet.View {
       textContent: `✋ ${userName}`,
     });
 
-    const closeButton = createCloseButton({
-      callback: () => {
-        speakerRow.remove();
-      },
-    });
-
     speakerRow.appendChild(speakerName);
-    speakerRow.appendChild(closeButton);
+
+    if (isSelf(this.viewId, viewId)) {
+      const closeButton = createCloseButton({
+        callback: () => {
+          this.publish("queue", "removeInterventie", this.viewId);
+        },
+      });
+
+      speakerRow.appendChild(closeButton);
+    }
 
     interventions.appendChild(speakerRow);
+  }
+
+  handleRemoveIntervention({ viewId }) {
+    for (const row of interventions.childNodes) {
+      if (row.getAttribute("data-viewId") === viewId)
+        interventions.removeChild(row);
+    }
   }
 
   handleAddSpeaker(speaker) {

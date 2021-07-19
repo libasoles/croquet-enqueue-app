@@ -4,6 +4,7 @@ export default class SpeakersQueue extends Croquet.Model {
   init({ identity }) {
     this.identity = identity;
     this.speakers = new Map();
+    this.interventies = new Map();
     this.currentSpeaker = {};
 
     this.subscribeToEvents();
@@ -14,6 +15,7 @@ export default class SpeakersQueue extends Croquet.Model {
     this.subscribe("queue", "next", this.nextSpeaker);
     this.subscribe("queue", "remove", this.removeSpeaker);
     this.subscribe("queue", "intervene", this.intervene);
+    this.subscribe("queue", "removeInterventie", this.removeIntervene);
   }
 
   isSomeoneTalking() {
@@ -52,11 +54,10 @@ export default class SpeakersQueue extends Croquet.Model {
   removeSpeaker(viewId) {
     const speaker = this.speakers.get(viewId);
 
-    if (speaker) {
-      this.speakers.delete(viewId);
+    if (!speaker) return;
 
-      this.publish("queue", "removed", speaker);
-    }
+    this.speakers.delete(viewId);
+    this.publish("queue", "removed", speaker);
   }
 
   getCurrentSpeaker() {
@@ -79,7 +80,21 @@ export default class SpeakersQueue extends Croquet.Model {
   }
 
   intervene(viewId) {
-    this.publish("queue", "addIntervention", this.identity.user(viewId));
+    const speaker = this.identity.user(viewId);
+
+    if (this.interventies.has(speaker.viewId)) return;
+
+    this.interventies.set(speaker.viewId, speaker);
+    this.publish("queue", "addIntervention", speaker);
+  }
+
+  removeIntervene(viewId) {
+    const speaker = this.interventies.get(viewId);
+
+    if (!speaker) return;
+
+    this.interventies.delete(speaker.viewId, speaker);
+    this.publish("queue", "revomeIntervention", speaker);
   }
 
   resetSpeakerContext() {
