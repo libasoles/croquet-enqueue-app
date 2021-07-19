@@ -12,6 +12,10 @@ This app also adds some other features, like sending feedback to speakers, colla
 - vanilla html & css
 - Parcel (transpiles code and generates a bundle)
 
+## Demo
+
+![Demo](https://github.com/libasoles/croquet-enqueue-app/blob/main/demo.gif)
+
 ## How to run
 
 `yarn start`
