@@ -112,7 +112,7 @@ export default class SpeakersQueueView extends Croquet.View {
   }
 
   handleCurrentSpeakerTurn(speaker) {
-    if (speaker.name) {
+    if (speaker.name && isSelf(speaker.viewId, this.viewId)) {
       this.broadcastMessage("Esta hablando " + speaker.name);
     }
 

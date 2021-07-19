@@ -30,7 +30,7 @@ export default class SpeakersQueue extends Croquet.Model {
     if (!this.isSomeoneTalking()) {
       this.currentSpeaker = speaker;
       this.publish("queue", "addFirst", speaker);
-      this.resetContext();
+      this.resetSpeakerContext();
 
       return;
     }
@@ -75,14 +75,14 @@ export default class SpeakersQueue extends Croquet.Model {
     this.speakers.delete(this.currentSpeaker.viewId);
 
     this.publish("queue", "current", this.currentSpeaker);
-    this.resetContext();
+    this.resetSpeakerContext();
   }
 
   intervene(viewId) {
     this.publish("queue", "addIntervention", this.identity.user(viewId));
   }
 
-  resetContext() {
+  resetSpeakerContext() {
     this.publish("reaction", "reset");
     this.publish("speakerTimer", "reset");
   }
