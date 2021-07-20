@@ -49,6 +49,10 @@
   transform: scale(0.8);
 }
 
+#speakerName {
+  max-width: 190px;
+}
+
 .identity {
   color: var(--secondaryFontColor);
   display: flex;
@@ -62,7 +66,20 @@
 }
 
 #widgets {
+  position: fixed;
+  width: 116px;
   top: 70px;
+  right: 4px;
+  font-size: 0;
+  background: white;
+}
+
+#widgets div {
+  margin: 8px;
+}
+
+#widgets #text_stats {
+  font-size: 12px;
 }
 
 @media (max-width: 640px) {

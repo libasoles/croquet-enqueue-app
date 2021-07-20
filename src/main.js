@@ -11,6 +11,9 @@ import FeedbackView from "./FeedbackView";
 import Notes from "./Notes";
 import NotesView from "./NotesView";
 
+import "./QR.js";
+import "normalize.css";
+
 class App extends Croquet.Model {
   init() {
     this.identity = Identity.create();
