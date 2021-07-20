@@ -1,6 +1,6 @@
 .sharedNotesModal .context {
   display: block;
-  margin: 10px 0px;
+  margin: 10px 0 20px;
   height: 40px;
   display: flex;
   justify-content: space-between;
@@ -12,10 +12,6 @@
 .sharedNotesModal .context > label,
 .sharedNotesModal .context > label > input {
   cursor: pointer;
-}
-
-.sharedNotesModal .context > label > input {
-  width: 10px;
 }
 
 .sharedNotesModal .context > .info {
@@ -33,10 +29,4 @@
   margin: 5px 0 10px;
   width: 100%;
   box-sizing: border-box;
-}
-
-@media (max-width: 640px) {
-  .sharedNotesModal textarea {
-    font-size: 1.1rem;
-  }
 }

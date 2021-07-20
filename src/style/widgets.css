@@ -62,7 +62,8 @@
 }
 
 .identity .name {
-  padding: 0 15px;
+  padding: 0 7px;
+  font-size: 0.9rem;
 }
 
 #widgets {

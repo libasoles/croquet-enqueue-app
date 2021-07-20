@@ -45,6 +45,10 @@ body {
   border-radius: 4px;
 }
 
+.button.medium {
+  padding: 8px 5px;
+}
+
 .button:hover {
   background: var(--secondaryColor);
 }
@@ -80,8 +84,22 @@ textarea:disabled {
   border: none;
 }
 
+input[type="checkbox"] {
+  width: 10px;
+}
+
 .hidden {
   display: none;
+}
+
+@media (max-width: 640px) {
+  textarea {
+    font-size: 1.1rem;
+  }
+
+  input[type="checkbox"] {
+    width: 20px;
+  }
 }
 
 @keyframes fadeIn {

@@ -52,6 +52,10 @@
   justify-content: space-between;
 }
 
+.speakerContext .spacer {
+  width: 50px;
+}
+
 .speakerContext .action {
   font-size: 0.75rem;
   background: none;
@@ -146,5 +150,18 @@
 @media (max-width: 640px) {
   .pageContent .mainSection {
     width: 100vw;
+  }
+
+  .speakerContext .action {
+    font-size: 0.8rem;
+    background: none;
+  }
+
+  .speakerContext .timer {
+    font-size: 0.8rem;
+  }
+
+  .speakerContext .spacer {
+    width: 0px;
   }
 }
