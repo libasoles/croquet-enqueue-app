@@ -42,7 +42,7 @@
   color: var(--secondaryFontColor);
   font-size: 0.85rem;
   border-left: 3px solid var(--tertiaryColor);
-  padding: 0px 5px;
+  padding-left: 5px;
 }
 
 .toast .button {
@@ -87,6 +87,10 @@
   #pageHeader,
   #widgets {
     display: none;
+  }
+
+  .toast {
+    font-size: 0.9rem;
   }
 }
 

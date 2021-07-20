@@ -1,4 +1,10 @@
-import { createElement, displayModal, hideModal, toggleModal } from "./utils";
+import {
+  createElement,
+  displayModal,
+  hide,
+  hideModal,
+  toggleModal,
+} from "./utils";
 
 export default class FeedbackView extends Croquet.View {
   constructor(model, speakersQueue) {
@@ -42,9 +48,12 @@ export default class FeedbackView extends Croquet.View {
       },
       for: this.speakersQueue.getCurrentSpeaker(),
       message: feedbackInput.value,
+      topic: topic.textContent,
     });
 
     hideModal(feedbackModal);
+
+    feedbackInput.value = "";
   }
 
   onToggleNotifications() {
@@ -71,7 +80,7 @@ export default class FeedbackView extends Croquet.View {
 
     this.prependFeedbackRow(feedback);
 
-    feedbackInput.value = "";
+    hide(notificationsModal.querySelector(".empty"));
   }
 
   prependFeedbackRow(feedback) {
@@ -86,13 +95,20 @@ export default class FeedbackView extends Croquet.View {
       textContent: feedback.message,
     });
 
+    const topic = createElement({
+      type: "span",
+      className: "notificationTopic footer",
+      textContent: feedback.topic,
+    });
+
     const author = createElement({
       type: "span",
-      className: "notificationAuthor",
+      className: "notificationAuthor footer",
       textContent: feedback.from.name,
     });
 
     notification.appendChild(content);
+    notification.appendChild(topic);
     notification.appendChild(author);
 
     notificationsList.prepend(notification);
