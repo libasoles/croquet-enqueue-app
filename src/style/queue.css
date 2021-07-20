@@ -36,7 +36,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0 4px 2px;
+  margin: 3px 0 4px 2px;
   color: var(--secondaryFontColor);
 }
 
@@ -84,7 +84,7 @@
   color: var(--primaryFontColor);
   padding: 2px 7px;
   background: #86d886;
-  font-size: 0.8rem !important;
+  font-size: 0.8rem;
 }
 
 .speakerFinished:hover {
@@ -98,6 +98,10 @@
   font-size: 0.8rem;
   justify-content: center;
   align-items: flex-end;
+}
+
+.interventions .user {
+  margin-top: 10px;
 }
 
 .interventions .name {
@@ -152,13 +156,22 @@
     width: 100vw;
   }
 
+  .speakerRow,
+  .speakerRow .button {
+    font-size: 1rem;
+  }
+
+  .speakerContext {
+    margin-top: 6px;
+  }
+
   .speakerContext .action {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     background: none;
   }
 
   .speakerContext .timer {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   .speakerContext .spacer {

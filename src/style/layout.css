@@ -97,4 +97,8 @@
     height: calc(100vh - var(--footerHeight));
     background: var(--secondaryDark);
   }
+
+  .modal .title {
+    font-size: 1.1rem;
+  }
 }

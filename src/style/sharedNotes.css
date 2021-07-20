@@ -1,12 +1,17 @@
 .sharedNotesModal .context {
   display: block;
-  margin: 10px 0 20px;
+  margin: 0 0 20px;
   height: 40px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   color: var(--tertiaryFontColor);
   font-size: 0.8rem;
+}
+
+.sharedNotesModal .context > label {
+  display: flex;
+  align-items: center;
 }
 
 .sharedNotesModal .context > label,
