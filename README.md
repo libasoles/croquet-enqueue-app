@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f445d908-f1f4-4473-ad57-151f804e81fa/deploy-status)](https://app.netlify.com/sites/blissful-mahavira-99db1a/deploys)
+
 ## What is it
 
 Basically, it´s a system that lets a group of people speak in turns. If you want to speak, you raise your hand and wait for your turn in a queue.
@@ -14,8 +16,9 @@ This app also adds some other features, like sending feedback to speakers, colla
 
 ## Demo
 
-![Demo](https://github.com/libasoles/croquet-enqueue-app/blob/main/demo.gif)
+Try it: https://blissful-mahavira-99db1a.netlify.app/
 
+![Demo](https://github.com/libasoles/croquet-enqueue-app/blob/main/demo.gif)
 
 ### Desktop
 
@@ -31,4 +34,3 @@ And then open: http://localhost:1234/
 
 - each view should start _hydrating_ it's state. That is, reflection the model state visually.
 - `viewId` represents a user, but the same user could open a new broser tab an have a second identity.
-
